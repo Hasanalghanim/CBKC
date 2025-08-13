@@ -1,0 +1,68 @@
+:root {
+    --primary-black: #000000;
+    --dark-grey: #1a1a1a;
+    --deep-red: #8B0000;
+    --maple-leaf-red: #FF0000;
+    --white: #FFFFFF;
+
+    --font-header: 'Bebas Neue', 'Anton', sans-serif;
+    --font-subheader: 'Oswald', 'Exo 2', sans-serif;
+    --font-body: 'Montserrat', 'Roboto', sans-serif;
+}
+
+/* Body */
+body {
+    background-color: var(--primary-black);
+    color: var(--white);
+    font-family: var(--font-body);
+}
+
+/* Navbar */
+.cbkc-nav {
+    background-color: var(--dark-grey) !important;
+    border-bottom: 4px solid var(--deep-red);
+}
+.cbkc-nav a {
+    font-family: var(--font-subheader);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.cbkc-nav a:hover {
+    color: var(--maple-leaf-red) !important;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: var(--font-header);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+h4, h5, h6 {
+    font-family: var(--font-subheader);
+}
+
+/* Buttons */
+.btn, .btn-large {
+    background-color: var(--deep-red) !important;
+    font-family: var(--font-subheader);
+    text-transform: uppercase;
+}
+.btn:hover {
+    background-color: var(--maple-leaf-red) !important;
+}
+
+/* Footer */
+.cbkc-footer {
+    background-color: var(--dark-grey) !important;
+    border-top: 4px solid var(--deep-red);
+    text-align: center;
+}
+
+/* Cards */
+.card.cbkc-card {
+    background-color: var(--dark-grey);
+    border: 2px solid var(--deep-red);
+}
+.card.cbkc-card .card-title {
+    font-family: var(--font-header);
+}
