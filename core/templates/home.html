@@ -3,10 +3,37 @@
 {% block title %}Home | CBKC{% endblock %}
 
 {% block content %}
-<h1>Home</h1>
-<div class="row">
-    {% comment %} {% for event in events %}
-        {% include "components/event_card.html" %}
-    {% endfor %} {% endcomment %}
+<div class='headerBackground'>
+
+
+
+    {% include 'includes/heroEvent.html' %}
+
+    
+    <div class='backgroundPhotoCover'>
+    </div>
+    <div class='heroSignature'>
+        <p> Canadian</p>
+        <p> Bare Knuckle</p>
+        <p> Championship</p>
+    </div>  
 </div>
+
+
+
+{% comment %} <div class="col s12 m4">
+    <div class="card cbkc-card">
+        <div class="card-image">
+            <img src="https://ufc.com/images/styles/event_results_athlete_headshot/s3/2019-04/SILHOUETTE.png?itok=tsOtpXgf">
+        </div>
+        <div class="card-content white-text">
+            <span class="card-title">HAsan</span>
+            <p>Record: 4-0</p>
+            <p>Weight Class: Lightweight </p>
+        </div>
+        <div class="card-action">
+            <a href="#" class="btn">View Profile</a>
+        </div>
+    </div>
+</div> {% endcomment %}
 {% endblock %}
