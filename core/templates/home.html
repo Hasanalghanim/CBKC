@@ -7,33 +7,29 @@
 
 
 
-    {% include 'includes/heroEvent.html' %}
+    {% include 'includes/heroEvent.html' %} 
 
     
     <div class='backgroundPhotoCover'>
     </div>
     <div class='heroSignature'>
-        <p> Canadian</p>
-        <p> Bare Knuckle</p>
-        <p> Championship</p>
+        <h6> Canadian</h6>
+        <h6> Bareknuckle</h6>
+        <h6> Championship</h6>
     </div>  
 </div>
 
 
 
-{% comment %} <div class="col s12 m4">
-    <div class="card cbkc-card">
-        <div class="card-image">
-            <img src="https://ufc.com/images/styles/event_results_athlete_headshot/s3/2019-04/SILHOUETTE.png?itok=tsOtpXgf">
-        </div>
-        <div class="card-content white-text">
-            <span class="card-title">HAsan</span>
-            <p>Record: 4-0</p>
-            <p>Weight Class: Lightweight </p>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn">View Profile</a>
-        </div>
+<div class="home-upnext-row">
+    <div class='container center-align'>
+        <h4 class='black-text'> Upcoming Events</h4>
     </div>
-</div> {% endcomment %}
+
+    {% include 'includes/upcomingEvents.html' %}
+</div>
+
+
+
+
 {% endblock %}

@@ -12,7 +12,7 @@
 
 /* Body */
 body {
-    background-color: var(--primary-black);
+    background-color: var(--white);
     color: var(--white);
     font-family: var(--font-body);
 }
@@ -20,7 +20,7 @@ body {
 /* Navbar */
 .cbkc-nav {
     background-color: var(--dark-grey) !important;
-    border-bottom: 4px solid var(--maple-leaf-red);
+    /* border-bottom: 4px solid var(--maple-leaf-red); */
 }
 .cbkc-nav a {
     font-family: var(--font-subheader);
@@ -36,11 +36,11 @@ h1, h2, h3 {
     font-family: var(--font-header);
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin: .5rem !important;
+    margin: .5rem 0 !important;
 }
 h4, h5, h6 {
     font-family: var(--font-subheader);
-    margin: .5rem !important;
+    margin: 0 !important;
 }
 
 /* Buttons */
@@ -61,7 +61,7 @@ h4, h5, h6 {
 /* Footer */
 .cbkc-footer {
     background-color: var(--dark-grey) !important;
-    border-top: 4px solid var(--maple-leaf-red);
+    /* border-top: 4px solid var(--maple-leaf-red); */
     text-align: center;
 }
 
