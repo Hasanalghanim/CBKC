@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit,ResizeToFill
+from fighters.image_processors import PreserveTransparencyResize
 
 # Fighter
 class Fighter(models.Model):
@@ -17,14 +18,14 @@ class Fighter(models.Model):
     image = models.ImageField(upload_to="fighters/", default="fighters/SILHOUETTE.jpg")
     image_thumbnail = ImageSpecField(
         source="image",
-        processors=[ResizeToFill(150, 150)],
-        format="JPEG",
+        processors=[PreserveTransparencyResize(150, 150)],
+        format="PNG",
         options={"quality": 80}
     )
     image_medium = ImageSpecField(
         source="image",
-        processors=[ResizeToFit(600, 600)],
-        format="JPEG",
+        processors=[PreserveTransparencyResize(600, 600)],
+        format="PNG",
         options={"quality": 85}
     )
 

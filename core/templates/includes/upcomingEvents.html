@@ -7,12 +7,12 @@
             {% if event.fight_card and event.fight_card.matches.all %}
                 {% with first_match=event.fight_card.matches.all.0 %}
                     <img class='fighter-left-image'
-                        src="{{ first_match.fighter_red.image_thumbnail.url }}"
+                        src="{{ first_match.fighter_red.processed_image.url }}"
                         alt="{{ first_match.fighter_red.last_name }}"
                         height='150' width='150'>
 
                     <img class='fighter-right-image'
-                        src="{{ first_match.fighter_blue.image_thumbnail.url }}"
+                        src="{{ first_match.fighter_blue.processed_image.url }}"
                         alt="{{ first_match.fighter_blue.last_name }}"
                         height='150' width='150'>
                 {% endwith %}
