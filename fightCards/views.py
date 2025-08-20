@@ -1,6 +1,7 @@
 import json
 from django.shortcuts import get_object_or_404, render
 from .models import Event
+from django.core.paginator import Paginator
 
 def fightCardDetail(request, slug):
     event = get_object_or_404(Event, slug=slug)
@@ -25,3 +26,18 @@ def fightCardDetail(request, slug):
     }
 
     return render(request, "fightcard_detail.html", context)
+
+
+def events_list(request):
+    events = Event.objects.all().order_by('-date')
+
+    # attach the main_event to each event
+    for event in events:
+        main_event = event.fight_card.matches.filter(is_main_event=True).first()
+        event.main_event = main_event
+
+    paginator = Paginator(events, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "fight_cards.html", {"page_obj": page_obj})

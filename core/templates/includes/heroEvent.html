@@ -1,13 +1,16 @@
+{% for event in upcoming_events %}
+
 <div class='landingPageMainQuote' >
     <div class="heroEventDetail container">
         <div>
-            <h3>August 9, 2025 12:00 PM MDT </h3>
-            <h1>BKFC FIGHT NIGHT EDMONTON </h1>
+            <h3>{{ event.date }} </h3>
+            <h1>{{ event.name }}</h1>
             <div class='hero-btns'>
                 <a href="#" class="btn-large">Buy Tickets</a>
-                <a href="#" class="btn-large hero-ticket-btn">VIEW EVENT</a>
+                <a href="{% url 'fightCardDetail' slug=event.slug %}"  class="btn-large hero-ticket-btn">VIEW EVENT</a>
             </div>
         </div>
         <div>  </div>
     </div>
 </div>
+{% endfor %}

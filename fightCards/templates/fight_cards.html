@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Home | CBKC{% endblock %}
+
+{% block content %}
+
+<meta name="description" content="{{ meta_description }}">
+
+{% with first_event=page_obj.0 %}
+<div class='headerBackground' style="background-image: url('{{ first_event.banner.url }}');">
+
+
+<div class='landingPageMainQuote' >
+    <div class="heroEventDetail container">
+        <div>
+            <h3>{{first_event.date}} </h3>
+            <h1>{{first_event.name}} </h1>
+            <div class='hero-btns'>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+        </div>
+        <div>  </div>
+    </div>
+</div>
+{% endwith %}
+
+    
+    <div class='backgroundPhotoCover'>
+    </div>
+
+    <div class='heroSignature'>
+        <h6> Canadian</h6>
+        <h6> Bareknuckle</h6>
+        <h6> Championship</h6>
+    </div>  
+</div>
+
+
+
+{% include 'includes/fight_cards_all_cards.html' %} 
+
+
+
+<script>
+    const data = {{ structured_data|safe }};
+    console.log(data.name);  // logs the event name
+</script>
+
+{% endblock %}

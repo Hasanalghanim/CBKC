@@ -1,0 +1,48 @@
+.fightCardFullCard {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: row; /* default row */
+}
+
+.fightCardFullCard .col {
+    padding: 10px;
+}
+
+/* Default (mobile first) */
+.fightCardFullCard .col.s3 {
+    width: 50%; /* fighters split the row */
+    order: 1;
+}
+
+.fightCardFullCard .col.s6 {
+    width: 100%; /* info spans full width under fighters */
+    order: 2;
+}
+.all_cards_event_detail{
+    color:black
+}
+.all_cards_event_detail h3{ 
+    font-size: 18px;
+    
+}
+
+
+/* Desktop / larger screens */
+@media (min-width: 1024px) {
+    .fightCardFullCard {
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fightCardFullCard .col.s3 {
+        flex: 0 0 25%;
+        order: unset; /* red left, blue right naturally */
+    }
+
+    .fightCardFullCard .col.s6 {
+        flex: 0 0 50%;
+        order: unset; /* info goes in the middle */
+    }
+}
