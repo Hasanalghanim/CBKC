@@ -1,16 +1,19 @@
-{% for event in upcoming_events %}
-
+{% with first_event=upcoming_events|first %}
+  {% if first_event %}
 <div class='landingPageMainQuote' >
     <div class="heroEventDetail container">
         <div>
-            <h3>{{ event.date }} </h3>
-            <h1>{{ event.name }}</h1>
+            <h3>{{ first_event.date }} </h3>
+            <h1>{{ first_event.name }}</h1>
             <div class='hero-btns'>
                 <a href="#" class="btn-large">Buy Tickets</a>
-                <a href="{% url 'fightCardDetail' slug=event.slug %}"  class="btn-large hero-ticket-btn">VIEW EVENT</a>
+                <a href="{% url 'fightCardDetail' slug=first_event.slug %}"  class="btn-large hero-ticket-btn">VIEW EVENT</a>
             </div>
         </div>
         <div>  </div>
     </div>
 </div>
-{% endfor %}
+  {% endif %}
+{% endwith %}
+
+

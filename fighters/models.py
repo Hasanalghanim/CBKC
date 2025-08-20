@@ -20,7 +20,7 @@ class Fighter(models.Model):
         source="image",
         processors=[ResizeToFill(150, 150)],
         format="PNG",
-        options={"quality": 80}
+        options={"quality": 80,"background": (0, 0, 0, 0)}
     )
     image_medium = ImageSpecField(
         source="image",

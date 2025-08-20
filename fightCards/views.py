@@ -31,9 +31,12 @@ def fightCardDetail(request, slug):
 def events_list(request):
     events = Event.objects.all().order_by('-date')
 
-    # attach the main_event to each event
+    # attach the main_event (if it exists) to each event
     for event in events:
-        main_event = event.fight_card.matches.filter(is_main_event=True).first()
+        if hasattr(event, "fight_card"):  # make sure fight_card exists
+            main_event = event.fight_card.matches.filter(is_main_event=True).first()
+        else:
+            main_event = None
         event.main_event = main_event
 
     paginator = Paginator(events, 5)

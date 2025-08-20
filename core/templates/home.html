@@ -3,11 +3,13 @@
 {% block title %}Home | CBKC{% endblock %}
 
 {% block content %}
-{% for event in upcoming_events %}
-  <div class="headerBackground" style="background-image: url('{{ event.banner.url }}');">
 
-
-{% endfor %}
+{% with first_event=upcoming_events|first %}
+  {% if first_event %}
+    <div class="headerBackground" style="background-image: url('{{ first_event.banner.url }}');">
+    </div>
+  {% endif %}
+{% endwith %}
 
     {% include 'includes/heroEvent.html' %} 
 

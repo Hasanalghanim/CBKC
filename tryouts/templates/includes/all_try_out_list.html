@@ -1,0 +1,42 @@
+<div class="container all-events">
+
+  {% for event in page_obj %}
+  <div class="fightCardFullCard row">
+
+    <!-- Banner (Left) -->
+    <div class="col s12 m3">
+      <img class="responsive-img tryout-banner"
+           src="{{ event.banner.url }}"
+           alt="{{ event.name }}">
+    </div>
+
+    <!-- Event Info (Middle) -->
+    <div class="col s12 m6 black-text">
+      <h3 class="black-text">{{ event.name }}</h3>
+      <p class="black-text">{{ event.date|date:"F j, Y" }}</p>
+      <p class="black-text">{{ event.venue }}<br>({{ event.location }})</p>
+    </div>
+
+    <!-- Register Button (Right) -->
+    <div class="col s12 m3 center-align">
+      <a href="{% url 'tryout_register' %}"
+         class="btn-large waves-effect waves-light">
+        REGISTER
+      </a>
+    </div>
+
+  </div>
+  {% endfor %}
+
+  <!-- Pagination -->
+  <div class="pagination center-align">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="btn-small">Previous</a>
+    {% endif %}
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="btn-small">Next</a>
+    {% endif %}
+  </div>
+
+</div>

@@ -5,7 +5,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('events', include('fightCards.urls') ),
+    path('events/', include('fightCards.urls') ),
+    path('tryouts/', include('tryouts.urls') ),
 
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,25 +2,29 @@
 
     {% for event in page_obj %}
     <div class="event-card">
-        
 
         {% if event.main_event %}
         <div class="fightCardFullCard">
-            
+
             <!-- Red fighter -->
             <div class="col s3">
-                <img class="fighter-left-image"
-                     src="{{ event.main_event.fighter_red.image_thumbnail.url }}"
-                     alt="{{ event.main_event.fighter_red.last_name }}">
+                {% if event.main_event.fighter_red and event.main_event.fighter_red.image_thumbnail %}
+                    <img class="fighter-left-image"
+                         src="{{ event.main_event.fighter_red.image_thumbnail.url }}"
+                         alt="{{ event.main_event.fighter_red.last_name }}">
+                {% else %}
+                {% load static %}
+                    <img class="fighter-left-image" src="{% static 'images/default_fighter.png' %}" alt="TBA">
+                {% endif %}
             </div>
 
             <!-- Fight details -->
             <div class="col s6 all_cards_event_detail">
                 <h3>{{ event.name }}</h3>
                 <h4>
-                    {{ event.main_event.fighter_red.last_name }} 
-                    vs 
-                    {{ event.main_event.fighter_blue.last_name }}
+                    {% if event.main_event.fighter_red %}{{ event.main_event.fighter_red.last_name }}{% else %}TBA{% endif %}
+                    vs
+                    {% if event.main_event.fighter_blue %}{{ event.main_event.fighter_blue.last_name }}{% else %}TBA{% endif %}
                 </h4>
                 <p>{{ event.venue }}<br>({{ event.location }})</p>
                 <p>{{ event.date|date:"F j, Y" }}</p>
@@ -28,15 +32,22 @@
 
             <!-- Blue fighter -->
             <div class="col s3">
-                <img class="fighter-right-image"
-                     src="{{ event.main_event.fighter_blue.image_thumbnail.url }}"
-                     alt="{{ event.main_event.fighter_blue.last_name }}">
+                {% if event.main_event.fighter_blue and event.main_event.fighter_blue.image_thumbnail %}
+                    <img class="fighter-right-image"
+                         src="{{ event.main_event.fighter_blue.image_thumbnail.url }}"
+                         alt="{{ event.main_event.fighter_blue.last_name }}">
+                {% else %}
+                    <img class="fighter-right-image"
+                         src="{% static 'images/default_fighter.png' %}"
+                         alt="TBA">
+                {% endif %}
             </div>
-         
+
         </div>
-            <a href="{% url 'fightCardDetail' slug=event.slug %}"  class="btn-large hero-ticket-btn">VIEW EVENT</a>
+        <a href="{% url 'fightCardDetail' slug=event.slug %}" class="btn-large hero-ticket-btn">VIEW EVENT</a>
+
         {% else %}
-            <p>No main event announced</p>
+        <p>No main event announced</p>
         {% endif %}
     </div>
     {% endfor %}
