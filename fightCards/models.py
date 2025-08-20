@@ -5,7 +5,6 @@ from imagekit.processors import ResizeToFit
 from fighters.models import Fighter
 
 
-
 class Event(models.Model):
     name = models.CharField(max_length=200)  # "BKFC 70", "House of Gaia Tryouts"
     date = models.DateField()
