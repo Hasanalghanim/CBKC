@@ -3,9 +3,11 @@
 {% block title %}Home | CBKC{% endblock %}
 
 {% block content %}
-<div class='headerBackground'  style="background-image: url('{{ upcoming_events.banner.url }}');"  >
+{% for event in upcoming_events %}
+  <div class="headerBackground" style="background-image: url('{{ event.banner.url }}');">
 
 
+{% endfor %}
 
     {% include 'includes/heroEvent.html' %} 
 
