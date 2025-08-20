@@ -1,16 +1,12 @@
 from PIL import Image
-from imagekit.processors import Processor
+from imagekit.processors import ResizeToFit
 
-class PreserveTransparencyResize(Processor):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
+class PreserveTransparencyResize(ResizeToFit):
     def process(self, image, context):
-        # Ensure image is in RGBA to preserve transparency
+        # Convert to RGBA to preserve transparency
         if image.mode != 'RGBA':
             image = image.convert('RGBA')
-        
-        # Resize while keeping transparency
-        image = image.resize((self.width, self.height), Image.ANTIALIAS)
+
+        # Use the ResizeToFit to resize the image
+        image = super().process(image, context)
         return image
