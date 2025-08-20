@@ -33,7 +33,7 @@ class Fighter(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name)
+            base_slug = slugify(f"{self.first_name} {self.first_name}" )
             slug = base_slug
             counter = 1
             while Fighter.objects.filter(slug=slug).exists():
