@@ -18,13 +18,13 @@ class Fighter(models.Model):
     image = models.ImageField(upload_to="fighters/", default="fighters/SILHOUETTE.jpg")
     image_thumbnail = ImageSpecField(
         source="image",
-        processors=[PreserveTransparencyResize(150, 150)],
+        processors=[ResizeToFill(150, 150)],
         format="PNG",
         options={"quality": 80}
     )
     image_medium = ImageSpecField(
         source="image",
-        processors=[PreserveTransparencyResize(600, 600)],
+        processors=[ResizeToFit(600, 600)],
         format="PNG",
         options={"quality": 85}
     )
