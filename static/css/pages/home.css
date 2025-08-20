@@ -1,6 +1,4 @@
 .headerBackground{
-    background-image: url(https://bkfc-cdn.gigcasters.com/a/881f5d0d-02d9-493b-b7ba-bced0210f9d9/39d1e984-6f40-4d73-a661-ad11c69477db/1753285976/o/BKFC_FN_Edmonton_web_no_text_1800x685.jpg?1753285976);
-    background-color: yellow;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -78,7 +76,7 @@
 
 .upcomingEvents {
     min-height: 12.5rem;
-    width: 70%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -87,47 +85,99 @@
 
 .upcomingEventsCardDetail{
     display: flex;
+    flex-direction: column;
     justify-content:  space-around;
     align-items: center;
-    height: 12.5rem;
-    background-color: var(--dark-grey);
-
+    min-height: 12.5rem;
+    padding: 1.5rem;
+    gap:1.5rem
 }
 
 
 .upcomingEventsCardFighterImage{
-    width:33%;
-    height:100%;
-    position: relative;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 
 }
 
-.fighter-left-image{
-    position:absolute;
-    bottom:0px;
-    left:0px;
-    z-index:1;
-}
-.fighter-right-image{
-    position:absolute;
-    bottom:0px;
-    left:150px;
-    z-index:2;
-}
-
-.upcoming-events-btns{
+.upcomingEventsCardFighterDetail{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    color: var(--dark-grey);
+}
+
+.upcomingEventsCardFighterCountry{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.upcoming-events-btns{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap:1.5rem
 }
 
 .view-event-btn{
-    border: 2px solid var(--deep-red);
+    width: 100%;
 }
 
 
+/* IPAD */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    
 
 
+
+}
+
+/* WINDOWES */
+@media (min-width: 1024px) {
+
+
+   .upcomingEventsCardDetail{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+
+    .upcomingEventsCardFighterImage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .upcomingEventsCardFighterDetail{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    .upcomingEventsCardFighterCountry{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: bold;
+    }
+    .upcoming-events-btns{
+        width: 50%;
+        flex-direction: column;
+    }
+
+
+}

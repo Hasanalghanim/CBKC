@@ -1,0 +1,56 @@
+.fightCardDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-around;
+    align-items: center;
+    min-height: 12.5rem;
+    padding: 1.5rem;
+    gap:1.5rem;
+    width:70%;
+    margin: auto;
+}
+.fightCardDetailRow{
+    margin-top: 5rem;
+  
+}
+.fightCardFullCard {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+}
+
+.fightCardBorderBottom{
+        border-bottom: 1px solid rgb(26,26,26, 0.2);
+}
+
+.fightCardFightImg{
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+
+
+/* IPAD */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    
+
+
+
+}
+
+/* WINDOWES */
+@media (min-width: 1024px) {
+
+
+   .fightCardDetail{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+
+
+}

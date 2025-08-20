@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Home | CBKC{% endblock %}
+
+{% block content %}
+
+<meta name="description" content="{{ meta_description }}">
+
+
+<div class='headerBackground' style="background-image: url('{{ event.banner.url }}');">
+
+
+<div class='landingPageMainQuote' >
+    <div class="heroEventDetail container">
+        <div>
+            <h3>{{event.date}} </h3>
+            <h1>{{event.name}} </h1>
+            <div class='hero-btns'>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+        </div>
+        <div>  </div>
+    </div>
+</div>
+    
+    <div class='backgroundPhotoCover'>
+    </div>
+
+    <div class='heroSignature'>
+        <h6> Canadian</h6>
+        <h6> Bareknuckle</h6>
+        <h6> Championship</h6>
+    </div>  
+</div>
+
+
+
+<div class='container fightCardDetailRow'>
+
+    {% if fight_card and fight_card.matches.all %}
+        {% for match in fight_card.matches.all %}
+        <div class="fightCardFullCard row">
+
+
+
+            <div class="">
+                <div class='col s4'>
+                    <img class='fighter-left-image '
+                        src="{{ match.fighter_red.image_thumbnail.url }}"
+                        alt="{{ match.fighter_red.last_name }}"
+                        height='150' width='150'>
+                </div>
+
+
+                <div class="black-text text-darken-2 center-align col s4">
+                    <h5 class="black-text text-darken-2 center-align fightCardBorderBottom">{{ match.weight_class }}</h5>
+                    <div class="black-text text-darken-2 center-align fightCardBorderBottom">
+                        {% if match.is_main_event %}<small>Main Event</small>{% endif %}
+                        {% if match.is_co_main_event %}<small>Co-Main Event</small>{% endif %}
+                        {% if match.is_feature_bout %}<small>Feature Bout</small>{% endif %}
+                    </div>
+                    <h4 class='fightCardBorderBottom'>{{ match.fighter_red.last_name }} vs {{ match.fighter_blue.last_name }}</h4>
+                    
+                
+                
+                </div>
+                <div class='col s4 fightCardFightImg'>
+                    <img class='fighter-right-image '
+                        src="{{ match.fighter_blue.image_thumbnail.url }}"
+                        alt="{{ match.fighter_blue.last_name }}"
+                        height='150' width='150'>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No matches yet</p>
+    {% endif %}
+
+
+</div>
+
+
+<script>
+    const data = {{ structured_data|safe }};
+    console.log(data.name);  // logs the event name
+</script>
+
+{% endblock %}
