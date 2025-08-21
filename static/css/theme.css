@@ -21,7 +21,12 @@ body {
 /* Navbar */
 .cbkc-nav {
     background-color: var(--dark-grey) !important;
-    /* border-bottom: 4px solid var(--maple-leaf-red); */
+    height: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 .cbkc-nav a {
     font-family: var(--font-subheader);
@@ -56,6 +61,24 @@ h4, h5, h6 {
     background-color: var(--deep-red) !important;
 }
 
+.brandLogoSvg{
+        fill: white;
+        transition: fill 5s ease; 
+}
+.brandLogoSvg:hover path {
+    fill: var(--maple-leaf-red)
+}
+
+.brand-logo {
+    height: 100%; /* Take the full height of the container */
+    display: flex;
+    align-items: center; /* Vertically center the SVG */
+}
+
+.brand-logo svg {
+    height: 100%; /* Fill the container height */
+    width: auto;  /* Maintain aspect ratio */
+}
 
 
 
