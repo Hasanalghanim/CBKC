@@ -37,6 +37,46 @@ body {
     color: var(--maple-leaf-red) !important;
 }
 
+
+
+/* Navbar */
+.cbkc-sidenav {
+    background-color: var(--dark-grey) !important;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.cbkc-sidenav a {
+    font-family: var(--font-subheader);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 25px !important
+}
+.cbkc-sidenav a:hover {
+    color: var(--maple-leaf-red) !important;
+}
+
+.cbkc-sidenav-container{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cbkc-sidenav-links a{
+    color:var(--white) !important
+}
+
+.cbkc-sidenav-logo a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
 /* Headings */
 h1, h2, h3 {
     font-family: var(--font-header);
