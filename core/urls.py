@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('events/', include('fightCards.urls') ),
     path('tryouts/', include('tryouts.urls') ),
+    path('dashboard/', include('dashboard.urls') ),
 
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

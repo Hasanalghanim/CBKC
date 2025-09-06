@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %} {% load vite_assets %}
+
+<link rel="stylesheet" href="{% vite_asset 'index.css' %}" />
+
+<div id="root"></div>
+<script type="module" src="{% vite_asset 'index.js' %}"></script>
+
+<script>
+	window.csrfToken = '{{ csrf_token }}';
+	console.log('CSRF Token: ', window.csrfToken);
+	window.location.hash = '/dashboard';
+
+	const navElement = document.querySelector('.CBKCNav');
+	navElement.style.display = 'none';
+</script>
+
+{% endblock %}
