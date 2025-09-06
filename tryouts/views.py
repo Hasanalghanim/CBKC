@@ -40,7 +40,7 @@ def tryout_success(request):
 
 
 class TryoutEventList(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         queryset = TryoutEvent.objects.all()
         serializer = TryoutEventSerializer(queryset, many=True)
@@ -48,7 +48,7 @@ class TryoutEventList(APIView):
     
 
 class TryoutRegistrantList(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self, request, tryout_event_id ):
         queryset = TryoutRegistrant.objects.filter(tryout_event_id=tryout_event_id)
         serializer = TryoutRegistrantSerializer(queryset, many=True)
@@ -59,7 +59,7 @@ class TryoutRegistrantList(APIView):
 
 
 class TryoutEventDetail(APIView):
-    # permission_classes = [IsAuthenticated]  # Uncomment if you want to enforce authentication
+    permission_classes = [IsAuthenticated]  
     def get(self, request, slug):
         tryout_event = get_object_or_404(TryoutEvent, slug=slug)
         serializer = TryoutEventSerializer(tryout_event)

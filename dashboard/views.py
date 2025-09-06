@@ -8,7 +8,6 @@ import json
 
 
 @ensure_csrf_cookie
-
 def check_auth(request):
     print("Session Data:", request.session)
     if request.user.is_authenticated:
@@ -20,7 +19,6 @@ def check_auth(request):
         return JsonResponse({'is_authenticated': False})
     
 @csrf_protect
-
 def logout_view(request):
     if request.method == "POST":
         logout(request)
@@ -32,7 +30,6 @@ def logout_view(request):
 
 @require_POST
 @ensure_csrf_cookie
-
 def login_view(request):
     try:
         data = json.loads(request.body)
