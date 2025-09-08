@@ -1,18 +1,22 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
 import { formatDateTimeWithTimezone } from '../../../util/formatDates';
 import TryoutsEditEventPopUpContent from './TryoutsEditEventPopUpContent';
 import CBKCDialog from '../../../components/CBKCDialog';
+import CBKCBreadCrumbs from '../../../components/CBKCBreadCrumbs';
 
 const CBKCTryoutDetailMobile = ({ event, onUpdate }) => {
 	return (
 		<>
+			<CBKCBreadCrumbs
+				links={[
+					{ url: '#/dashboard/tryouts_tab', name: 'Tryout Events' },
+					{ url: `#/dashboard/tryouts_tab/${event.slug}`, name: event.name, active: true },
+				]}
+			/>
 			<Card sx={{}}>
 				<CardMedia
 					component='img'
@@ -23,6 +27,9 @@ const CBKCTryoutDetailMobile = ({ event, onUpdate }) => {
 				<CardContent>
 					<Typography gutterBottom variant='h5' component='div'>
 						{event.name}
+					</Typography>
+					<Typography variant='body2' sx={{ color: 'text.secondary' }}>
+						{formatDateTimeWithTimezone(event.date)}
 					</Typography>
 					<Typography variant='body2' sx={{ color: 'text.secondary' }}>
 						{event.venue}
