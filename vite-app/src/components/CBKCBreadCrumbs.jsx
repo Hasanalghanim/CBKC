@@ -5,7 +5,12 @@ import Link from '@mui/material/Link';
 const CBKCBreadCrumbs = ({ links }) => {
 	return (
 		<>
-			<Breadcrumbs aria-label='breadcrumb'>
+			<Breadcrumbs
+				sx={{
+					boxShadow: 'none',
+					borderRadius: 0,
+					backgroundColor: 'transparent',
+				}}>
 				{links.map((url, index) => {
 					return (
 						<div key={index}>
