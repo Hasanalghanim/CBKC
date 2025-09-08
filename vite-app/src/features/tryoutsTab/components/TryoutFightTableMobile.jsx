@@ -50,7 +50,7 @@ const TryoutFightTableMobile = ({ eventId }) => {
 					<Grid container spacing={1}>
 						{data.map((fighter) => {
 							return (
-								<Grid item size={6}>
+								<Grid item size={6} key={fighter.id}>
 									<TryoutFIghtersCard fighter={fighter} />
 								</Grid>
 							);
