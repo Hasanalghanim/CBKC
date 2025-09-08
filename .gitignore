@@ -52,3 +52,4 @@ vite-app/src/main.jsx
 vite-app/src/util/CircleLoader.jsx
 vite-app/src/util/formatDates.js
 vite-app/vite.config.js
+vite-app/.env
