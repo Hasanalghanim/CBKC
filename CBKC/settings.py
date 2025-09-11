@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['www.canadianbareknuckle.com','canadianbareknuckle.com','127.0.
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,11 +43,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'imagekit',
+    'compressor',
     'core',
     'fighters',
     'fightCards',
     'tryouts',
-    'dashboard'
+    'dashboard',
+    
 ]
 
 MIDDLEWARE = [
@@ -61,15 +64,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
+]
 
+COMPRESS_ENABLED = True  
+COMPRESS_OFFLINE = True 
 
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
+    "https://canadianbareknuckle.com",
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  
+    "https://canadianbareknuckle.com",  
 ]
 
 

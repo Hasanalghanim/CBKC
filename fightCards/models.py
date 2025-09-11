@@ -6,7 +6,7 @@ from fighters.models import Fighter
 
 
 class Event(models.Model):
-    name = models.CharField(max_length=200)  # "BKFC 70", "House of Gaia Tryouts"
+    name = models.CharField(max_length=200)  
     date = models.DateField()
     location = models.CharField(max_length=255)
     venue = models.CharField(max_length=255,blank=True, null=True)
