@@ -1,0 +1,18 @@
+{% if breadcrumb_items %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {% for crumb in breadcrumb_items %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "name": "{{ crumb.name|escapejs }}",
+      "item": "{{ crumb.item|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}

@@ -1,0 +1,40 @@
+{% if seo_object %}
+  {# ---- Dynamic Page Title and Meta Description ---- #}
+  <title>{{ seo_object.get_meta_title }}</title>
+  <meta name="description" content="{{ seo_object.get_meta_description }}">
+  <meta name="keywords" content="{{ seo_object.get_meta_keywords|join:',' }}">
+
+  {# ---- Open Graph (Facebook / LinkedIn) ---- #}
+  <meta property="og:title" content="{{ seo_object.get_meta_title }}">
+  <meta property="og:description" content="{{ seo_object.get_meta_description }}">
+  <meta property="og:image" content="{{ seo_object.get_meta_image }}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:type" content="website">
+
+  {# ---- Twitter Card ---- #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seo_object.get_meta_title }}">
+  <meta name="twitter:description" content="{{ seo_object.get_meta_description }}">
+  <meta name="twitter:image" content="{{ seo_object.get_meta_image }}">
+
+
+{% else %}
+  {# ---- Default Site-Wide Meta Tags ---- #}
+  <title>Canadian Bare Knuckle Championship</title>
+  <meta name="description" content="Canadian Bare Knuckle Championship – Official Website">
+  <meta name="keywords" content="Bare Knuckle Canada, Canadian Bare Knuckle Fighting">
+
+  {# ---- Default Open Graph ---- #}
+  <meta property="og:title" content="Canadian Bare Knuckle Championship">
+  <meta property="og:description" content="Canadian Bare Knuckle Championship – Official Website">
+  <meta property="og:image" content="/static/images/default-banner.jpg">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:type" content="website">
+
+  {# ---- Default Twitter Card ---- #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Canadian Bare Knuckle Championship">
+  <meta name="twitter:description" content="Canadian Bare Knuckle Championship – Official Website">
+  <meta name="twitter:image" content="/static/images/default-banner.jpg">
+
+{% endif %}

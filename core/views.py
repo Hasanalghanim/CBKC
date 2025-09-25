@@ -18,7 +18,8 @@ def home(request):
     )
 
     context = {
-        "upcoming_events": upcoming_events
+        "upcoming_events": upcoming_events,
+        "seo_object": upcoming_events.first() 
     }
 
     return render(request, "home.html", context)

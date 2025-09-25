@@ -3,26 +3,28 @@ from django.shortcuts import get_object_or_404, render
 from .models import Event
 from django.core.paginator import Paginator
 
+
+def test_event_meta(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    print("Rendering template with event:", event)
+    return render(request, 'test_event_meta.html', {'event': event})
+
+
 def fightCardDetail(request, slug):
     event = get_object_or_404(Event, slug=slug)
     fight_card = getattr(event, 'fight_card', None)
 
-    # Structured data for SEO
-    structured_data = {
-        "@context": "https://schema.org",
-        "@type": "SportsEvent",
-        "name": event.name,
-        "startDate": event.date.isoformat(),
-        "url": request.build_absolute_uri(),
-        "image": request.build_absolute_uri(event.banner.url) if event.banner else "",
-    }
+    breadcrumb_items = [
+        {"name": "Home", "item": request.build_absolute_uri('/')},
+        {"name": "Events", "item": request.build_absolute_uri('/events/')},
+        {"name": event.name, "item": request.build_absolute_uri()}
+    ]
 
     context = {
         "event": event,
         "fight_card": fight_card,
-        "structured_data": json.dumps(structured_data),
-        "meta_title": event.meta_title,
-        "meta_description": event.meta_description
+        "seo_object": event,
+        "breadcrumb_items":breadcrumb_items
     }
 
     return render(request, "fightcard_detail.html", context)
@@ -43,4 +45,4 @@ def events_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, "fight_cards.html", {"page_obj": page_obj})
+    return render(request, "fight_cards.html", {"page_obj": page_obj,"seo_object": events.first()})

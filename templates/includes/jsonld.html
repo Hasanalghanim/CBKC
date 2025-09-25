@@ -1,0 +1,48 @@
+
+{% if seo_object %}
+    {% if seo_object.jsonld_type == 'SportsEvent' %}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "name": "{{ seo_object.name|escapejs }}",
+          "startDate": "{{ seo_object.date|date:'c' }}",
+          "location": {
+            "@type": "Place",
+            "name": "{{ seo_object.venue|default_if_none:seo_object.location|escapejs }}",
+            "address": "{{ seo_object.location|escapejs }}"
+          },
+          "image": "{{ seo_object.get_meta_image }}",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "url": "{{ request.build_absolute_uri }}"
+        }
+        </script>
+    {% elif seo_object.jsonld_type == 'Person' %}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          {% if seo_object.first_name %}
+          "name": "{{ seo_object.first_name }} {{ seo_object.last_name|default_if_none:'' }}",
+          {% else %}
+          "name": "{{ seo_object.name|escapejs }}",
+          {% endif %}
+          {% if seo_object.nickname %}"alternateName": "{{ seo_object.nickname }}",{% endif %}
+          "image": "{{ seo_object.get_meta_image }}",
+          "url": "{{ request.build_absolute_uri }}"
+        }
+        </script>
+    {% endif %}
+{% else %}
+    {# Default Organization JSON-LD if no seo_object passed #}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Canadian Bare Knuckle Championship",
+      "url": "https://canadianbareknuckle.com",
+      "logo": "/static/images/logo.png"
+    }
+    </script>
+{% endif %}

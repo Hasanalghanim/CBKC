@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Home | CBKC{% endblock %}
+
 
 {% block content %}
 
@@ -39,11 +39,5 @@
 
 {% include 'includes/fight_cards_all_cards.html' %} 
 
-
-
-<script>
-    const data = {{ structured_data|safe }};
-    console.log(data.name);  // logs the event name
-</script>
 
 {% endblock %}

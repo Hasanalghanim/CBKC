@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% include 'includes/meta_tags.html' with object=event %}
+
+  <link rel="canonical" href="https://canadianbareknuckle.com{{ request.path }}">
+</head>
+<body>
+  <h1>{{ event.name }}</h1>
+  <p>{{ event.date }} – {{ event.location }}</p>
+</body>
+</html>

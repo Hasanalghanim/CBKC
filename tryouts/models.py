@@ -22,9 +22,36 @@ class TryoutEvent(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
-
+    @property
+    def jsonld_type(self):
+        return "SportsEvent"
+    
     def __str__(self):
         return self.name
+    
+
+    def get_meta_title(self):
+        return f"{self.name} Tryout | Canadian Bare Knuckle Championship"
+
+    def get_meta_description(self):
+        if self.description:
+            desc = self.description[:150]
+        else:
+            desc = f"Join the tryout {self.name} taking place on {self.date} at {self.venue or self.location}."
+        return desc
+
+    def get_meta_keywords(self):
+
+        keywords = ['Bare Knuckle Canada', 'CBKC Tryout', self.name]
+        if self.location:
+            keywords.append(self.location)
+        return keywords
+
+    def get_meta_image(self):
+
+        if self.banner:
+            return self.banner.url
+        return '/static/images/default-banner.jpg'
     
 
 

@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x%3*2n*2uiv7=0!9dlj$u_-oy^!*c&_0-s=t+sc=bf8i+xu%s^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.canadianbareknuckle.com','canadianbareknuckle.com','127.0.0.1', 'localhost']
 
@@ -33,15 +33,18 @@ ALLOWED_HOSTS = ['www.canadianbareknuckle.com','canadianbareknuckle.com','127.0.
 # Application definition
 
 INSTALLED_APPS = [
+    'meta',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'rest_framework',
     'corsheaders',
     'imagekit',
+    
     'core',
     'fighters',
     'fightCards',
@@ -101,8 +104,8 @@ WSGI_APPLICATION = 'CBKC.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': '/home/canadianbareknuckle/db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': '/home/canadianbareknuckle/db.sqlite3',
         
     }
 }
@@ -176,3 +179,24 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 
 SESSION_COOKIE_AGE = 3600  
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+
+
+
+
+
+
+
+
+
+
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'canadianbareknuckle.com'
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+
+META_DEFAULT_TITLE = 'Canadian Bare Knuckle Championship'
+META_DEFAULT_DESCRIPTION = 'Canadian Bare Knuckle Championship – Official Website'
+META_DEFAULT_KEYWORDS = ['Bare Knuckle Canada', 'Canadian Bare Knuckle Fighting']
+META_DEFAULT_IMAGE = '/static/images/default-banner.jpg'
