@@ -6,7 +6,7 @@ from django.http import JsonResponse
 def allFighters(request):
     fighters_qs = Fighter.objects.all().order_by('last_name')
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(fighters_qs, 2)
+    paginator = Paginator(fighters_qs, 8)
     fighters = paginator.get_page(page_number)
 
     breadcrumb_items = [
