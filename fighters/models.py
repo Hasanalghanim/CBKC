@@ -22,9 +22,9 @@ class Fighter(models.Model):
     )
     image_medium = ImageSpecField(
         source="image",
-        processors=[ResizeToFit(600, 600)],
+        processors=[ResizeToFit(200, 200)],
         format="PNG",
-        options={"quality": 85}
+        options={"quality": 90}
     )
 
     def save(self, *args, **kwargs):

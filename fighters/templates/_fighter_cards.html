@@ -1,0 +1,17 @@
+{% for fighter in fighters %}
+<div class="fighter-col">
+	<div class="fighter-card">
+		<div class="fighter-image">
+			<img src="{{ fighter.image_medium.url }}" alt="{{ fighter.first_name }} {{ fighter.last_name }}" />
+		</div>
+		{% if fighter.nickname %}
+		<p class="fighter-nickname">"{{ fighter.nickname }}"</p>
+		{% endif %}
+		<h3 class="fighter-name">{{ fighter.first_name }} {{ fighter.last_name }}</h3>
+		{% if fighter.weight_class %}
+		<p class="fighter-weight">{{ fighter.weight_class }}</p>
+		{% endif %}
+		<p class="fighter-record">{{ fighter.record }} [W-L-D]</p>
+	</div>
+</div>
+{% endfor %}

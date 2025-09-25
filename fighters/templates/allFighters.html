@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container fighter-container">
+	<div class="fighter-header">
+		<h2 class="fighter-title">Fighters</h2>
+	</div>
+
+	<div class="fighter-row" id="fighter-list">{% include '_fighter_cards.html' %}</div>
+
+	{% if fighters.has_next %}
+	<div class="center-align">
+		<button id="load-more-btn" class="btn waves-effect waves-light">
+			<i class="material-icons left">refresh</i> Load More Fighters
+		</button>
+	</div>
+	{% endif %}
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		let page = 2; // start from page 2
+		const button = document.getElementById('load-more-btn');
+		const fighterList = document.getElementById('fighter-list');
+
+		if (button) {
+			button.addEventListener('click', async function () {
+				button.disabled = true;
+				button.textContent = 'Loading...';
+
+				const response = await fetch(`?page=${page}`, {
+					headers: { 'x-requested-with': 'XMLHttpRequest' },
+				});
+				const data = await response.json();
+
+				// Append new fighters
+				fighterList.insertAdjacentHTML('beforeend', data.html);
+
+				// Add fade-in animation to new cards
+				const newCards = fighterList.querySelectorAll('.fighter-col:not(.fade-in)');
+				newCards.forEach((card, index) => {
+					card.style.animationDelay = `${index * 0.1}s`;
+					card.classList.add('fade-in');
+				});
+
+				page++;
+
+				if (!data.has_next) {
+					// No more pages — hide button and show message
+					button.style.display = 'none';
+
+					// Insert "All fighters loaded" message below fighter list
+					const message = document.createElement('p');
+					message.className = 'center-align all-loaded-message';
+					message.textContent = 'All fighters loaded';
+					fighterList.insertAdjacentElement('afterend', message);
+				} else {
+					// Reset button text
+					button.disabled = false;
+					button.textContent = 'Load More Fighters';
+				}
+			});
+		}
+	});
+</script>
+{% endblock %}
