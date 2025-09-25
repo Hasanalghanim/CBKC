@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator
 from .models import Fighter
 from django.http import JsonResponse
@@ -25,3 +25,41 @@ def allFighters(request):
         "fighters": fighters,
         "breadcrumb_items": breadcrumb_items
     })
+
+
+def fightCardDetail(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    fight_card = getattr(event, 'fight_card', None)
+
+    breadcrumb_items = [
+        {"name": "Home", "item": request.build_absolute_uri('/')},
+        {"name": "Events", "item": request.build_absolute_uri('/events/')},
+        {"name": event.name, "item": request.build_absolute_uri()}
+    ]
+
+    context = {
+        "event": event,
+        "fight_card": fight_card,
+        "seo_object": event,
+        "breadcrumb_items":breadcrumb_items
+    }
+
+    return render(request, "fightcard_detail.html", context)
+
+def fighter_detail(request, slug):
+    fighter = get_object_or_404(Fighter, slug=slug)
+
+    breadcrumb_items = [
+        {"name": "Home", "item": request.build_absolute_uri('/')},
+        {"name": "Fighters", "item": request.build_absolute_uri('/fighters/')},
+        {"name": fighter.first_name, "item": request.build_absolute_uri()}
+    ]
+
+
+    context = {
+        "event": fighter,
+        "seo_object": fighter,
+        "breadcrumb_items":breadcrumb_items
+    }
+
+    return render(request, "fightcard_detail.html", context)
