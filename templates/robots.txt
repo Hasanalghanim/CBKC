@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://canadianbareknuckle.com/sitemap.xml
+Sitemap: https://www.canadianbareknuckle.com/sitemap.xml
