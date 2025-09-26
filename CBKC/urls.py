@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import EventSitemap, TryoutEventSitemap,FighterSitemap, StaticViewSitemap
+from .sitemaps import EventSitemap, TryoutEventSitemap,FighterSitemap, StaticViewSitemap,ArticleSitemap
 from django.views.generic import TemplateView
 
 
@@ -28,6 +28,7 @@ sitemaps = {
     'fighters': FighterSitemap,
     'tryouts': TryoutEventSitemap,
     'static': StaticViewSitemap,
+    'ArticleSitemap':ArticleSitemap,
 }
 
 urlpatterns = [
