@@ -155,3 +155,31 @@ h6 {
 	color: var(--light-grey);
 	font-size: 22px;
 }
+
+
+
+.article-content strong {
+	font-weight: 700 !important;
+}
+.article-content em {
+	font-style: italic !important;
+}
+.article-content ul {
+	list-style-type: disc !important;
+	padding-left: 0;
+	list-style-position: outside !important;
+}
+
+.article-content ul > li {
+	list-style-type: disc !important;
+}
+
+.article-content ol {
+	list-style-type: decimal !important;
+	padding-left: 0;
+	list-style-position: outside !important;
+}
+
+.article-content ol > li {
+	list-style-type: decimal !important;
+}

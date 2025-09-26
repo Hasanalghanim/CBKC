@@ -204,3 +204,20 @@ META_DEFAULT_TITLE = 'Canadian Bare Knuckle Championship'
 META_DEFAULT_DESCRIPTION = 'Canadian Bare Knuckle Championship – Official Website'
 META_DEFAULT_KEYWORDS = ['Bare Knuckle Canada', 'Canadian Bare Knuckle Fighting']
 META_DEFAULT_IMAGE = '/static/images/default-banner.jpg'
+
+
+
+
+
+
+
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 500,
+        'width': 'auto',
+        'contentsCss': ['/static/css/ckeditor_materialize.css'],  # Custom styles to match Materialize
+    },
+}
