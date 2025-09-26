@@ -16,7 +16,7 @@ class Fighter(models.Model):
     image = models.ImageField(upload_to="fighters/", default="fighters/SILHOUETTE.jpg")
     image_thumbnail = ImageSpecField(
         source="image",
-        processors=[ResizeToFill(300, 300)],
+        processors=[ResizeToFill(500, 500)],
         format="PNG",
         options={"quality": 80, "background": (0, 0, 0, 0)}
     )

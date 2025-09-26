@@ -12,6 +12,7 @@
 		<p class="fighter-weight">{{ fighter.weight_class }}</p>
 		{% endif %}
 		<p class="fighter-record">{{ fighter.record }} [W-L-D]</p>
+		<a href="{% url 'fighter_detail' slug=fighter.slug %}"  class="btn ">View Profile</a>
 	</div>
 </div>
 {% endfor %}

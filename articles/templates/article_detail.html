@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="headerBackground" style="background-image: url('{{ article.image_banner.url }}');"></div>
+
+<div class="landingPageMainQuote">
+	<div class="heroEventDetail container">
+		<div>
+			<h1>{{ article.title }}</h1>
+		</div>
+	</div>
+</div>
+<div class="container"><h2 class="articleAuthor">{{ article.author}} - {{article.published_date}}</h2></div>
+
+<div class="container">
+	<div class="article-content">{{ article.content|safe }}</div>
+</div>
+
+{% endblock %}

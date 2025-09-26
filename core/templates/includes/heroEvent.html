@@ -6,11 +6,11 @@
             <h3>{{ first_event.date }} </h3>
             <h1>{{ first_event.name }}</h1>
             <div class='hero-btns'>
-                <a href="#" class="btn-large">Buy Tickets</a>
-                <a href="{% url 'fightCardDetail' slug=first_event.slug %}"  class="btn-large hero-ticket-btn">VIEW EVENT</a>
+                <a href="#" class="btn">Buy Tickets</a>
+                <a href="{% url 'fightCardDetail' slug=first_event.slug %}"  class="btn hero-ticket-btn">VIEW EVENT</a>
             </div>
         </div>
-        <div>  </div>
+        
     </div>
 </div>
   {% endif %}

@@ -1,0 +1,56 @@
+<div class="row fighterDetailContainer">
+	<!-- Column 1 -->
+	<div class="col s6 l4 center-align fighterHeroImgCol">
+		<div class="fighterHeroImg">
+			<img src="{{ fighter.image_thumbnail.url }}" alt="{{ fighter_red.last_name }}" />
+		</div>
+	</div>
+
+	<!-- Column 2 -->
+	<div class="col s6 l4 center-align fighterHeroDetailCol">
+		<div class="fighterHeroDetail">
+			{% if fighter.nickname %}
+			<h3 class="fighter-nickname gray-text">"{{ fighter.nickname }}"</h3>
+			{% endif %}
+			<h1 class="fighter-name white-text">{{ fighter.first_name }} {{ fighter.last_name }}</h1>
+			{% if fighter.weight_class %}
+			<h5 class="fighter-weight white-text">{{ fighter.weight_class }}</h5>
+			{% endif %}
+			<h5 class="fighter-weight white-text">{{ fighter.record }} [W-L-D]</h5>
+		</div>
+	</div>
+
+	<!-- Column 3 -->
+	<div class="col s12 l4 center-align fighterDetailPreviousFightsCol">
+		<div class="fighterDetailPreviousFights">
+			<h2>Previous Fights</h2>
+			<div>
+				{% for fight in previous_fights %}
+				<div>
+					<div class="fighterDetailPreviousFightsMatchImages">
+						<img
+							class="fighterDetailPreviousFightsImg"
+							src="{{ fight.fighter_red.image_thumbnail.url }}"
+							alt="{{ fight.fighter_red.last_name }}"
+						/>
+
+						<img
+							class="fighterDetailPreviousFightsImg"
+							src="{{ fight.fighter_blue.image_thumbnail.url }}"
+							alt="{{ fight.fighter_blue.last_name }}"
+						/>
+					</div>
+					<div class="fighterDetailPreviousFightsMatchDetail">
+						<h4>{{ fight.fighter_red.last_name }}</h4>
+						<h6>vs</h6>
+						<h4>{{ fight.fighter_blue.last_name }}</h4>
+					</div>
+					{% if fight.winner %} – Winner: {{ fight.winner.first_name }} {% endif %}
+				</div>
+				{% empty %}
+				<div>No previous fights recorded.</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

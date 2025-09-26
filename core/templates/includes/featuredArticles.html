@@ -1,0 +1,24 @@
+{% if featured_articles %}
+
+<div class="fighterProfileArticlesContainer">
+	<h2 class="grey-text">{{ fighter.first_name }} Featured</h2>
+
+	<div class="cards-scroll">
+		{% for article in featured_articles %}
+		<div class="card fighterProfileArticlesCard">
+			<div class="card-image waves-effect waves-block waves-light fighterProfileArticlesImage">
+				<img src="{{article.image_thumbnail.url}}" />
+			</div>
+
+			<div class="card-content fighterProfileArticlesCardContent">
+				<h5 class="card-title">{{article.title}}</h5>
+				<a href="{% url 'article_detail' slug=article.slug %}" class="btn">Read Article</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% else %}
+<h4 class="grey-text">No articles for {{ fighter.first_name }} yet</h4>
+{% endif %}

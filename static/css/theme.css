@@ -138,3 +138,20 @@ h6 {
 .card.cbkc-card .card-title {
 	font-family: var(--font-header);
 }
+
+.article-content {
+	color: var(--dark-grey);
+	margin-bottom: 100px;
+}
+
+.article-content img {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 1rem auto;
+}
+.articleAuthor {
+	color: var(--light-grey);
+	font-size: 22px;
+}

@@ -1,130 +1,119 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <meta name="description" content="{{ meta_description }}" />
 
 <div class="headerBackground" style="background-image: url('{{ event.banner.url }}');">
-  <div class="landingPageMainQuote">
-    <div class="heroEventDetail container">
-      <div>
-        <h3>{{ event.date|date:"F j, Y" }}</h3>
-        <h1>{{ event.name }}</h1>
-        <h3>{{ event.venue }} ({{ event.location }})</h3>
+	<div class="landingPageMainQuote">
+		<div class="heroEventDetail container">
+			<div>
+				<h3>{{ event.date|date:"F j, Y" }}</h3>
+				<h1>{{ event.name }}</h1>
+				<h3>{{ event.venue }} ({{ event.location }})</h3>
 
-        <div class="hero-btns">
-          <a href="#" class="btn">Buy Tickets</a>
-        </div>
-      </div>
-    </div>
-  </div>
+				<div class="hero-btns">
+					<a href="#" class="btn">Buy Tickets</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="backgroundPhotoCover"></div>
+	<div class="backgroundPhotoCover"></div>
 
-  <div class="heroSignature">
-    <h6>Canadian</h6>
-    <h6>Bareknuckle</h6>
-    <h6>Championship</h6>
-  </div>
+	<div class="heroSignature">
+		<h1>Canadian</h1>
+		<h1>Bareknuckle</h1>
+		<h1>Championship</h1>
+	</div>
 </div>
 
-{% if fight_card and fight_card.matches.all %}
-  {% for match in fight_card.matches.all %}
-    <div class="fight-card-match">
+{% if fight_card and fight_card.matches.all %} {% for match in fight_card.matches.all %}
+<div class="fight-card-match">
+	<!-- Left Fighter -->
+	<div class="fighter fighter-left">
+		<img src="{{ match.fighter_red.image_medium.url }}" alt="{{ match.fighter_red.last_name }}" />
+		<a href="{% url 'fighter_detail' slug=match.fighter_red.slug %}">
+			<h3 class="fighter-name">{{ match.fighter_red.first_name }} {{ match.fighter_red.last_name }}</h3></a
+		>
+	</div>
 
-      <!-- Left Fighter -->
-      <div class="fighter fighter-left">
-        <img src="{{ match.fighter_red.image_medium.url }}" alt="{{ match.fighter_red.last_name }}">
-        {% if match.fighter_red.rank %}
-          <p class="fighter-rank">#{{ match.fighter_red.rank }}</p>
-        {% endif %}
-        <h3 class="fighter-name">{{ match.fighter_red.first_name }} {{ match.fighter_red.last_name }}</h3>
-        <p class="fighter-country">
-          <img src="{{ match.fighter_red.flag_url }}" alt="{{ match.fighter_red.country }}" class="flag">
-          {{ match.fighter_red.country }}
-        </p>
-      </div>
+	<!-- Fight Details -->
+	<div class="fight-details">
+		<p class="weight-class">{{ match.weight_class|upper }} BOUT</p>
 
-      <!-- Fight Details -->
-      <div class="fight-details">
-        <p class="weight-class">{{ match.weight_class|upper }} BOUT</p>
+		{% if match.is_main_event %}
+		<p class="fight-type">MAIN EVENT</p>
+		{% elif match.is_co_main_event %}
+		<p class="fight-type">CO-MAIN EVENT</p>
+		{% elif match.is_feature_bout %}
+		<p class="fight-type">FEATURE BOUT</p>
+		{% endif %}
 
-        {% if match.is_main_event %}
-          <p class="fight-type">MAIN EVENT</p>
-        {% elif match.is_co_main_event %}
-          <p class="fight-type">CO-MAIN EVENT</p>
-        {% elif match.is_feature_bout %}
-          <p class="fight-type">FEATURE BOUT</p>
-        {% endif %}
+		<h2 class="vs">VS</h2>
+	</div>
 
-        <h2 class="vs">VS</h2>
-      </div>
-
-      <!-- Right Fighter -->
-      <div class="fighter fighter-right">
-        <img src="{{ match.fighter_blue.image_medium.url }}" alt="{{ match.fighter_blue.last_name }}">
-        {% if match.fighter_blue.rank %}
-          <p class="fighter-rank">#{{ match.fighter_blue.rank }}</p>
-        {% endif %}
-        <h3 class="fighter-name">{{ match.fighter_blue.first_name }} {{ match.fighter_blue.last_name }}</h3>
-        <p class="fighter-country">
-          {{ match.fighter_blue.country }}
-          <img src="{{ match.fighter_blue.flag_url }}" alt="{{ match.fighter_blue.country }}" class="flag">
-        </p>
-      </div>
-
-    </div>
-  {% empty %}
-    <p>No matches yet</p>
-  {% endfor %}
-{% else %}
-  <p>No matches yet</p>
+	<!-- Right Fighter -->
+	<div class="fighter fighter-right">
+		<img src="{{ match.fighter_blue.image_medium.url }}" alt="{{ match.fighter_blue.last_name }}" />
+		<a href="{% url 'fighter_detail' slug=match.fighter_blue.slug %}">
+			<h3 class="fighter-name">{{ match.fighter_blue.first_name }} {{ match.fighter_blue.last_name }}</h3>
+		</a>
+	</div>
+</div>
+{% empty %}
+<p>No matches yet</p>
+{% endfor %} {% else %}
+<p>No matches yet</p>
 {% endif %}
 
 <div class="container all-events">
-  {% for event in page_obj %}
-    <div class="event-card">
-      {% if event.main_event %}
-        <div class="fightCardFullCard">
-          <!-- Red fighter -->
-          <div class="col s3">
-            <img class="fighter-left-image"
-                 src="{{ event.main_event.fighter_red.image_medium.url }}"
-                 alt="{{ event.main_event.fighter_red.last_name }}">
-          </div>
+	{% for event in page_obj %}
+	<div class="event-card">
+		{% if event.main_event %}
+		<div class="fightCardFullCard">
+			<!-- Red fighter -->
+			<div class="col s3">
+				<img
+					class="fighter-left-image"
+					src="{{ event.main_event.fighter_red.image_medium.url }}"
+					alt="{{ event.main_event.fighter_red.last_name }}"
+				/>
+			</div>
 
-          <!-- Fight details -->
-          <div class="col s6 all_cards_event_detail">
-            <h3>{{ event.name }}</h3>
-            <h4>{{ event.main_event.fighter_red.last_name }} vs {{ event.main_event.fighter_blue.last_name }}</h4>
-            <p>{{ event.venue }}<br />({{ event.location }})</p>
-            <p>{{ event.date|date:"F j, Y" }}</p>
-          </div>
+			<!-- Fight details -->
+			<div class="col s6 all_cards_event_detail">
+				<h3>{{ event.name }}</h3>
+				<h4>{{ event.main_event.fighter_red.last_name }} vs {{ event.main_event.fighter_blue.last_name }}</h4>
+				<p>{{ event.venue }}<br />({{ event.location }})</p>
+				<p>{{ event.date|date:"F j, Y" }}</p>
+			</div>
 
-          <!-- Blue fighter -->
-          <div class="col s3">
-            <img class="fighter-right-image"
-                 src="{{ event.main_event.fighter_blue.image_medium.url }}"
-                 alt="{{ event.main_event.fighter_blue.last_name }}">
-          </div>
-        </div>
-      {% else %}
-        <p>No main event announced</p>
-      {% endif %}
-    </div>
-  {% empty %}
-    <p>No events available at this time.</p>
-  {% endfor %}
+			<!-- Blue fighter -->
+			<div class="col s3">
+				<img
+					class="fighter-right-image"
+					src="{{ event.main_event.fighter_blue.image_medium.url }}"
+					alt="{{ event.main_event.fighter_blue.last_name }}"
+				/>
+			</div>
+		</div>
+		{% else %}
+		<p>No main event announced</p>
+		{% endif %}
+	</div>
+	{% empty %}
+	<p>No events available at this time.</p>
+	{% endfor %}
 
-  <!-- Pagination -->
-  <div class="pagination">
-    {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    {% endif %}
-    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-    {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">Next</a>
-    {% endif %}
-  </div>
+	<!-- Pagination -->
+	<div class="pagination">
+		{% if page_obj.has_previous %}
+		<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+		{% endif %}
+		<span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+		{% if page_obj.has_next %}
+		<a href="?page={{ page_obj.next_page_number }}">Next</a>
+		{% endif %}
+	</div>
 </div>
 
 {% endblock %}

@@ -3,6 +3,20 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from fightCards.models import Event, Fighter
 from tryouts.models import TryoutEvent 
+from articles.models import Article 
+
+
+
+
+class ArticleSitemap(Sitemap):
+    changefreq = "weekly"
+    priority = 0.8
+
+    def items(self):
+        return Article.objects.all().order_by('published_date')
+
+    def location(self, obj):
+        return reverse('article_detail', kwargs={'slug': obj.slug})
 
 class EventSitemap(Sitemap):
     changefreq = "weekly"
@@ -42,7 +56,7 @@ class StaticViewSitemap(Sitemap):
     changefreq = 'daily'
 
     def items(self):
-        return ['home']  # name of your urlpattern
+        return ['home','allFighters','events_list'] 
 
     def location(self, item):
         return reverse(item)

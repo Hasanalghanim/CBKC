@@ -126,3 +126,158 @@
 	max-height: 100%;
 	object-fit: contain;
 }
+/* ---------------------------------------- */
+
+.fighterDetailContainer {
+	background-color: var(--dark-grey);
+	width: 100%;
+	padding-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-bottom: 50px;
+}
+
+.fighterHeroImgCol {
+	order: 1;
+}
+.fighterHeroDetailCol {
+	order: 2;
+}
+.fighterDetailPreviousFightsCol {
+	order: 3;
+}
+
+.fighterHero {
+	display: flex;
+	border-top: solid white 1px;
+}
+.fighterHeroImg {
+}
+.fighterHeroImg img {
+	height: 200px;
+}
+.fighterHeroDetail {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fighterHeroDetail h1 {
+	font-size: 24px;
+	color: var(--white);
+}
+.fighterDetailPreviousFights {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-top: 50px;
+}
+
+.fighterDetailPreviousFightsMatchDetail {
+	display: flex;
+	justify-content: space-between;
+}
+.fighterDetailPreviousFightsMatchDetail h4 {
+	font-size: 14px;
+}
+
+.fighterDetailPreviousFights h2 {
+	font-size: 24px;
+}
+
+.fighterDetailPreviousFightsImg {
+	height: 100px;
+}
+
+.fighterProfileArticlesContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.fighterProfileArticlesContainer h2 {
+	font-size: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 50px !important;
+}
+
+.fighterProfileArticlesCard {
+	flex: 0 0 auto;
+	width: 200px;
+	scroll-snap-align: start;
+}
+.fighterProfileArticlesImage {
+	width: 200px;
+}
+.fighterProfileArticlesCardContent {
+	background-color: var(--dark-grey);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.fighterProfileArticlesCardContent h5 {
+	font-size: 14px !important;
+	line-height: 20px !important;
+	margin-bottom: 10px !important;
+}
+
+.cards-scroll {
+	display: flex; /* lay out cards in a row */
+	gap: 1rem; /* space between cards */
+	overflow-x: auto; /* horizontal scrolling */
+	padding: 1rem; /* padding around the scroll area */
+	scroll-snap-type: x mandatory; /* optional nice snapping */
+}
+
+.cards-scroll::-webkit-scrollbar {
+	height: 8px; /* customize scrollbar if you want */
+}
+/* IPAD */
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* WINDOWES */
+@media (min-width: 1024px) {
+	.fighterHeroImg img {
+		height: 400px;
+	}
+	.fighterHeroImgCol {
+		order: 2;
+	}
+	.fighterHeroDetailCol {
+		order: 1;
+	}
+	.fighterDetailPreviousFightsCol {
+		order: 3;
+	}
+	.fighterHeroDetail h1 {
+		font-size: 48px;
+	}
+
+	.fighterDetailPreviousFightsMatchDetail h4 {
+		font-size: 24px;
+	}
+
+	.fighterHeroDetail h3 {
+		font-size: 24px;
+	}
+
+	.fighterDetailPreviousFights h2 {
+		font-size: 24px;
+	}
+
+	.fighterProfileArticlesContainer {
+		align-items: center;
+	}
+	.fighterProfileArticlesContainer h2 {
+		font-size: 32px;
+	}
+}

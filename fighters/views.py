@@ -1,7 +1,9 @@
 from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator
 from .models import Fighter
+from fightCards.models import Match
 from django.http import JsonResponse
+from django.db.models import Q
 
 def allFighters(request):
     fighters_qs = Fighter.objects.all().order_by('last_name')
@@ -27,27 +29,15 @@ def allFighters(request):
     })
 
 
-def fightCardDetail(request, slug):
-    event = get_object_or_404(Event, slug=slug)
-    fight_card = getattr(event, 'fight_card', None)
-
-    breadcrumb_items = [
-        {"name": "Home", "item": request.build_absolute_uri('/')},
-        {"name": "Events", "item": request.build_absolute_uri('/events/')},
-        {"name": event.name, "item": request.build_absolute_uri()}
-    ]
-
-    context = {
-        "event": event,
-        "fight_card": fight_card,
-        "seo_object": event,
-        "breadcrumb_items":breadcrumb_items
-    }
-
-    return render(request, "fightcard_detail.html", context)
 
 def fighter_detail(request, slug):
     fighter = get_object_or_404(Fighter, slug=slug)
+    articles = fighter.articles.all()
+
+    # Pull all matches where this fighter was red or blue
+    previous_fights = Match.objects.filter(
+        Q(fighter_red=fighter) | Q(fighter_blue=fighter)
+    ).order_by('-fight_card__event__date')  
 
     breadcrumb_items = [
         {"name": "Home", "item": request.build_absolute_uri('/')},
@@ -55,11 +45,12 @@ def fighter_detail(request, slug):
         {"name": fighter.first_name, "item": request.build_absolute_uri()}
     ]
 
-
     context = {
-        "event": fighter,
+        "fighter": fighter,
+        "previous_fights": previous_fights,
+        "articles":articles,
         "seo_object": fighter,
-        "breadcrumb_items":breadcrumb_items
+        "breadcrumb_items": breadcrumb_items
     }
 
-    return render(request, "fightcard_detail.html", context)
+    return render(request, "fighterProfile.html", context)

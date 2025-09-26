@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x%3*2n*2uiv7=0!9dlj$u_-oy^!*c&_0-s=t+sc=bf8i+xu%s^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.canadianbareknuckle.com','canadianbareknuckle.com','127.0.0.1', 'localhost']
 
@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'imagekit',
-    
+    'ckeditor',
+    'ckeditor_uploader', 
     'core',
     'fighters',
     'fightCards',
     'tryouts',
-    'dashboard'
+    'dashboard',
+    'articles'
 ]
 
 MIDDLEWARE = [
@@ -104,8 +106,8 @@ WSGI_APPLICATION = 'CBKC.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': '/home/canadianbareknuckle/db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': '/home/canadianbareknuckle/db.sqlite3',
         
     }
 }
@@ -156,6 +158,8 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/canadianbareknuckle/CBKC/media'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

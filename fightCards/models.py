@@ -70,7 +70,6 @@ class Match(models.Model):
     fighter_blue = models.ForeignKey(Fighter, on_delete=models.CASCADE, related_name="blue_corner")
     weight_class = models.CharField(max_length=100)
 
-    
     order = models.PositiveIntegerField(default=0, help_text="Manually set fight order (1 = first fight)")
     is_main_event = models.BooleanField(default=False)
     is_co_main_event = models.BooleanField(default=False)

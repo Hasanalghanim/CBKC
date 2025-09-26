@@ -8,20 +8,20 @@
 	border-bottom: 1px solid #eaeaea;
 	text-align: center;
 	flex-wrap: nowrap;
-	color: black; 
+	color: black;
 }
 
 .fighter-left {
 	order: 0;
-	flex: 1 1 30%;
+	flex: 0 0 30%;
 }
 .fight-details {
 	order: 1;
-	flex: 1 1 40%;
+	flex: 0 0 40%;
 }
 .fighter-right {
 	order: 2;
-	flex: 1 1 30%;
+	flex: 0 0 30%;
 }
 
 .fighter {
@@ -29,12 +29,21 @@
 	flex-direction: column;
 	align-items: center;
 }
-.fighter img {
-	max-height: 250px;
-	object-fit: contain;
+.fighter a:hover {
+	color: black;
 }
 
-/* ===== Mobile (<=768px): details full-width on top; fighters side-by-side ===== */
+.fighter-name:hover {
+	color: var(--maple-leaf-red);
+}
+.fighter img {
+	width: 200px;
+	height: 250px;
+	object-fit: cover;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
 	.fight-card-match {
 		flex-wrap: wrap;
@@ -55,7 +64,9 @@
 	}
 
 	.fighter img {
-		max-height: 100px;
+		width: 120px;
+		height: 150px;
+		object-fit: cover;
 	}
 	.fighter-name {
 		font-size: 1rem;
