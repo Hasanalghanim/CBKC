@@ -13,7 +13,7 @@ class Fighter(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
 
-    image = models.ImageField(upload_to="fighters/", default="fighters/SILHOUETTE.jpg")
+    image = models.ImageField(upload_to="fighters/", default="fighters/SILHOUETTE.png")
     image_thumbnail = ImageSpecField(
         source="image",
         processors=[ResizeToFill(500, 500)],
