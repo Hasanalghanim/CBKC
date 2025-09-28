@@ -135,7 +135,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding-bottom: 50px;
+	
 }
 
 .fighterHeroImgCol {
@@ -153,9 +153,12 @@
 	border-top: solid white 1px;
 }
 .fighterHeroImg {
+	display: flex;
+    justify-content: center;
 }
 .fighterHeroImg img {
-	height: 200px;
+	width: 100%;
+	height: auto;
 }
 .fighterHeroDetail {
 	height: 100%;
