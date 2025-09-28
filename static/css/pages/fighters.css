@@ -249,9 +249,7 @@
 
 /* WINDOWES */
 @media (min-width: 1024px) {
-	.fighterHeroImg img {
-		height: 400px;
-	}
+	
 	.fighterHeroImgCol {
 		order: 2;
 	}
