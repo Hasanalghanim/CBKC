@@ -38,7 +38,7 @@
         </div>
 
         <div class='upcoming-events-btns'>
-            <a href="#" class="btn view-event-btn">Buy Tickets</a>
+            <a href={{ event.ticket_url }} target="_blank" class="btn view-event-btn">Buy Tickets</a>
             <a href="{% url 'fightCardDetail' slug=event.slug %}" class="btn hero-ticket-btn view-event-btn">VIEW EVENT</a>
 
         </div>

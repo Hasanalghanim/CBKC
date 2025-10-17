@@ -3,10 +3,12 @@
 <div class='landingPageMainQuote' >
     <div class="heroEventDetail container">
         <div>
+          
             <h3>{{ first_event.date }} </h3>
+            {% include 'includes/countdowntimer.html' %} 
             <h1>{{ first_event.name }}</h1>
             <div class='hero-btns'>
-                <a href="#" class="btn">Buy Tickets</a>
+                <a href={{ first_event.ticket_url }}  target="_blank" class="btn">Buy Tickets</a>
                 <a href="{% url 'fightCardDetail' slug=first_event.slug %}"  class="btn hero-ticket-btn">VIEW EVENT</a>
             </div>
         </div>
@@ -15,5 +17,4 @@
 </div>
   {% endif %}
 {% endwith %}
-
 

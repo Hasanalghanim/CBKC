@@ -1,43 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-
-
-{% block content %}
-
-<meta name="description" content="{{ meta_description }}">
+<meta name="description" content="{{ meta_description }}" />
 
 {% with first_event=page_obj.0 %}
-<div class='headerBackground' style="background-image: url('{{ first_event.banner.url }}');">
+<div class="headerBackground" style="background-image: url('{{ first_event.banner.url }}');">
+	<div class="landingPageMainQuote">
+		<div class="heroEventDetail container">
+			<div>
+				<h3>{{first_event.date}}</h3>
+				<h1>{{first_event.name}}</h1>
+				<div class="hero-btns">
+					<a href="{{first_event.ticket_url}}" target="_blank" class="btn">Buy Tickets</a>
+				</div>
+			</div>
+			<div></div>
+		</div>
+	</div>
+	{% endwith %}
 
+	<div class="backgroundPhotoCover"></div>
 
-<div class='landingPageMainQuote' >
-    <div class="heroEventDetail container">
-        <div>
-            <h3>{{first_event.date}} </h3>
-            <h1>{{first_event.name}} </h1>
-            <div class='hero-btns'>
-                <a href="#" class="btn">Buy Tickets</a>
-            </div>
-        </div>
-        <div>  </div>
-    </div>
-</div>
-{% endwith %}
-
-    
-    <div class='backgroundPhotoCover'>
-    </div>
-
-    <div class='heroSignature'>
-        <h1> Canadian</h1>
-        <h1> Bareknuckle</h1>
-        <h1> Championship</h1>
-    </div>  
+	<div class="heroSignature">
+		<h1>Canadian</h1>
+		<h1>Bareknuckle</h1>
+		<h1>Championship</h1>
+	</div>
 </div>
 
-
-
-{% include 'includes/fight_cards_all_cards.html' %} 
-
-
-{% endblock %}
+{% include 'includes/fight_cards_all_cards.html' %} {% endblock %}
