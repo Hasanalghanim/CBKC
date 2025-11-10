@@ -29,6 +29,24 @@ def fightCardDetail(request, slug):
 
     return render(request, "fightcard_detail.html", context)
 
+def fightCardVideoPlayer(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    
+
+    breadcrumb_items = [
+        {"name": "Home", "item": request.build_absolute_uri('/')},
+        {"name": "Events", "item": request.build_absolute_uri('/events/')},
+        {"name": event.name, "item": request.build_absolute_uri()}
+    ]
+
+    context = {
+        "event": event,
+        "seo_object": event,
+        "breadcrumb_items":breadcrumb_items
+    }
+
+    return render(request, "fightCardPlayer.html", context)
+
 
 def events_list(request):
     events = Event.objects.all().order_by('-date')

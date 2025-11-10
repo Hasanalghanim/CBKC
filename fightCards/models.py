@@ -14,6 +14,7 @@ class Event(ModelMeta, models.Model):
     slug = models.SlugField(unique=True, blank=True)
     start_time = models.DateTimeField(blank=True, null=True)
     ticket_url = models.CharField(max_length=255,blank=True, null=True)
+    playerUrl = models.CharField(max_length=255, blank=True, null=True)
 
     banner = models.ImageField(upload_to="events/")
     banner_web = ImageSpecField(

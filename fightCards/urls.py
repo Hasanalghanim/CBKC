@@ -6,5 +6,5 @@ from django.conf import settings
 urlpatterns = [
     path('',views.events_list, name='events_list'),
     path('<slug:slug>',views.fightCardDetail, name='fightCardDetail'),
-    path('test-event/<slug:slug>/', views.test_event_meta, name='test_event_meta'),
+    path('<slug:slug>/player/',views.fightCardVideoPlayer, name='fightCardVideoPlayer'),
 ]  

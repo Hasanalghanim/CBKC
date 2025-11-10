@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+
+<meta name="description" content="{{ meta_description }}" />
+
+<div class="headerBackground" style="background-image: url('{{ event.banner.url }}');">
+
+
+	
+	<div class="landingPageMainQuote">
+		<div class="heroEventDetail container">
+			<iframe src={{event.playerUrl}} width="640" height="360" allowFullScreen="1" frameBorder="0"></iframe>
+		</div>
+	</div>
+
+	<div class="backgroundPhotoCover"></div>
+
+	<div class="heroSignature">
+		<h1>Canadian</h1>
+		<h1>Bareknuckle</h1>
+		<h1>Championship</h1>
+	</div>
+</div>
+
+
+
+{% endblock %}
